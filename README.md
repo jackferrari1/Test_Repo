@@ -1,25 +1,57 @@
+# Continuous Integration (CI) configuration examples for MATLAB&reg;
 
+Are you interested in automating your testing with CI?
 
-# MATLAB CI Examples
+Not sure how to connect MATLAB with CI systems?
 
-This repository shows how to run MATLAB tests with a variety of continuous integration systems.
+We've got you covered!
+
+This repository makes it easy to run your MATLAB tests on some of the most common CI platforms. The configuration files take care of setting up MATLAB to work with the CI system and automatically executing your MATLAB tests.
+
+Take a look at the "Quick Start Guide" below to get started!
+
 
 ## Badges
 
+Badges look really great, but they're not always easy to set up. Take a look at the badges and reference links below to get started with badges for your repository.
+
 | **CI Platform** | **Badges** | **Badge Help** |
 |:----------------|:-----------|:---------------|
-| Azure DevOps | [![Azure DevOps Build Status](https://dev.azure.com/sifounak/MATLAB_Test/_apis/build/status/sifounak.Test_Repo?branchName=main)](https://dev.azure.com/sifounak/MATLAB_Test/_build/latest?definitionId=1&branchName=main) ![Azure DevOps Coverage](https://img.shields.io/azure-devops/coverage/sifounak/MATLAB_Test/1/main) | [Blog with helpful information for setting up Azure DevOps badges](https://gregorsuttie.com/2019/03/20/azure-devops-add-your-build-status-badges-to-your-wiki/) |
-| CircleCI | [![CircleCI Build Badge](https://circleci.com/gh/sifounak/Test_Repo.svg?style=shield)](https://app.circleci.com/pipelines/github/sifounak/Test_Repo) | [CircleCI documentation for setting up badges](https://circleci.com/docs/2.0/status-badges/#generating-a-status-badge "CircleCI documentation for setting up badges") |
-| GitHub Actions | [![MATLAB](https://github.com/acampbel/Test_Repo/workflows/MATLAB/badge.svg)](https://github.com/acampbel/Test_Repo/actions?query=workflow%3AMATLAB) | [GitHub Actions documentation for setting up badges](https://docs.github.com/en/actions/managing-workflow-runs/adding-a-workflow-status-badge) |
-| Jenkins | TBD | TBD |
-| Travis CI | [![Travis CI Build Status](https://travis-ci.com/sifounak/Test_Repo.svg?style=svg?branch=main)](https://travis-ci.com/sifounak/Test_Repo) | [Travis CI documentation for setting up badges](https://docs.travis-ci.com/user/status-images/ "Travis CI documentation for setting up badges") |
+| Azure&reg; DevOps | [![Azure DevOps Build Status](https://dev.azure.com/asifouna/Testing%20MATLAB%20CI/_apis/build/status/asifouna.matlab-ci-examples?branchName=main)](https://dev.azure.com/asifouna/Testing%20MATLAB%20CI/_build/latest?definitionId=1&branchName=main) ![Azure DevOps Coverage](https://img.shields.io/azure-devops/coverage/asifouna/Testing%20MATLAB%20CI/1/main) | [Blog with helpful information for setting up Azure DevOps badges](https://gregorsuttie.com/2019/03/20/azure-devops-add-your-build-status-badges-to-your-wiki/) |
+| CircleCI&reg; | [![CircleCI Build Badge](https://circleci.com/gh/asifouna/matlab-ci-examples.svg?style=shield)](https://travis-ci.com/asifouna/matlab-ci-examples) | [CircleCI documentation for setting up badges](https://circleci.com/docs/2.0/status-badges/#generating-a-status-badge "CircleCI documentation for setting up badges") |
+| GitHub&reg; Actions | [![MATLAB](https://github.com/asifouna/matlab-ci-examples/workflows/MATLAB/badge.svg)](https://github.com/asifouna/matlab-ci-examples/actions?query=workflow%3AMATLAB) | [GitHub Actions documentation for setting up badges](https://docs.github.com/en/actions/managing-workflow-runs/adding-a-workflow-status-badge) |
+| Travis CI&trade; | [![Travis CI Build Status](https://travis-ci.com/asifouna/matlab-ci-examples.svg?branch=main)](https://travis-ci.com/asifouna/matlab-ci-examples) | [Travis CI documentation for setting up badges](https://docs.travis-ci.com/user/status-images/ "Travis CI documentation for setting up badges") |
+
+
+## Quick start guide
+Here's how to quickly get this repository running on a CI system:
+1. Fork the repository to your own GitHub account
+2. Go to one of the supported CI platforms and install the available MATLAB CI plugin.  
+***Note:*** GitHub Actions does not require this step.
+3. Create a new CI job using your forked repository.  
+4. Enjoy using CI with MATLAB!
+
+That's really it!
+
+To use your MATLAB code or Simulink&reg; models with this repository, simply replace the existing code and tests in "main" and "test" with your own code and tests. There's no need to modify any of the CI configuration files because they are all completely agnostic of the MATLAB code being used.
+
+***Note:*** In most cases, the configuration files will automatically get picked up by the CI platform during step 3, but some platforms may require you to specify which file to use.
+
+
+## Supported CI platforms
+* Azure DevOps
+* CircleCI
+* GitHub Actions
+* Jenkins&trade;
+* Travis CI
+
 
 ## About the code
 The primary goal of this repository is to provide a set of configuration files as templates that illustrate how to run MATLAB on various CI platforms (e.g., Azure DevOps, CircleCI, GitHub Actions, Jenkins, Travis CI).
 
 Each of these pipeline definitions does four things:
 
-1. Install the latest MATLAB release on a Linux®-based build agent
+1. Install the latest MATLAB release on a Linux&reg;-based build agent
 2. Run all MATLAB tests in the root of your repository, including its subfolders
 3. Produce a test results report (if necessary)
 4. Produce a code coverage report in Cobertura XML format for the source folder
@@ -28,9 +60,9 @@ Each of these pipeline definitions does four things:
 
 The example MATLAB code example `dayofyear.m` is a simple function takes a date string `"mm/dd/yyyy"` and returns the day-of-year number.
 
-Notes on `dayofyear.m`:
-* MATLAB already includes a day-of-year calculation using `day(d,"dayofyear")`, where `d` is a datetime object.
-* This code is only used as an example since it is a concept that is familiar to most people.
+Notes:
+* MATLAB already includes a day-of-year calculation using `day(d,"dayofyear")`, where `d` is a datetime object. This code is only used as an example since it is a concept that is familiar to most people.
+* The code coverage is intentionally set below 100% to show how missing coverage looks with badges. Uncomment the last test in `TestExamples.m` to increase the coverage to 100%.
 
 There are 2 test classes provided:
 1. TestExamples.m - A simple set of equality and negative tests
@@ -49,6 +81,7 @@ The repository includes these files:
 | [`Jenkinsfile`](Jenkinsfile) | The [`Jenkinsfile`](Jenkinsfile) file defines the pipeline that runs on [Jenkins](https://plugins.jenkins.io/matlab/) |
 | [`.travis.yml`](.travis.yml) | The [`.travis.yml`](.travis.yml) file defines the pipeline that runs on [Travis CI](https://docs.travis-ci.com/user/languages/matlab/) |
 
+
 ## CI configuration files
 
 ### Azure DevOps
@@ -60,6 +93,17 @@ steps:
   - task: RunMATLABTests@0
     inputs:
       sourceFolder: main
+      codeCoverageCobertura: code-coverage/coverage.xml
+      testResultsJUnit: test-results/results.xml
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: 'JUnit'
+      testResultsFiles: 'test-results/results.xml'
+  - task: PublishCodeCoverageResults@1
+    inputs:
+      codeCoverageTool: 'Cobertura'
+      summaryFileLocation: 'code-coverage/coverage.xml'
+      pathToSources: 'main/'
 
   # As an alternative to RunMATLABTests, you can use RunMATLABCommand to execute a MATLAB script, function, or statement.
   # - task: RunMATLABCommand@0
@@ -158,14 +202,14 @@ language: matlab
 script: matlab -batch "addpath('main'); results = runtests('IncludeSubfolders', true); assertSuccess(results);"
 ```
 
-
-
 ## Caveats
 * MATLAB builds on Travis CI are available only for public projects.
 * MATLAB builds on Azure DevOps, CircleCI, and GitHub Actions that use CI service-hosted agents are also available only for public projects. However, these integrations can also be used in private projects that leverage self-hosted runners/agents.
 
+
 ## Links
 - [Continuous Integration with MATLAB and Simulink](https://www.mathworks.com/solutions/continuous-integration.html)
+
 
 ## Contact Us
 If you have any questions or suggestions, please contact MathWorks at [continuous-integration@mathworks.com](mailto:continuous-integration@mathworks.com).

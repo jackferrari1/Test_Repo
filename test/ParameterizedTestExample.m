@@ -1,6 +1,8 @@
 classdef ParameterizedTestExample < matlab.unittest.TestCase
     % Creates 12 test points, one for the 15th day of every month of 2021
     
+	% Copyright 2021 The MathWorks, Inc.
+	
     properties (TestParameter)
         monthNum = num2cell(1:12);
         dayNum = {15};

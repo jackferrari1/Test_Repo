@@ -6,6 +6,8 @@ function doy = dayofyear(ddmmyyyy,dateFormat)
 %           doy = day(d,"dayofyear")
 %       where d is a datetime object
 
+% Copyright 2021 The MathWorks, Inc.
+
 arguments
     ddmmyyyy string;
     dateFormat (1,1) string {mustBeMember(dateFormat,["mm/dd/yyyy","dd/mm/yyyy"])} = "mm/dd/yyyy";

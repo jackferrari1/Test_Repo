@@ -15,6 +15,8 @@ classdef TestExamples < matlab.unittest.TestCase
     %        out to illustrate missing code coverage in continous
     %        integration (CI) systems
 
+    % Copyright 2021 The MathWorks, Inc.
+
     methods (Test)
 
         function testNonLeapYear(testCase)
