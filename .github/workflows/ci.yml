@@ -32,7 +32,7 @@ jobs:
       - name: Run all tests
         uses: matlab-actions/run-command@v0
         with:
-          command: addpath('main/Scripts','main/Data','main/Models','main/Requirements'); LaneFollowingExecModelAdvisor; LaneFollowingExecControllerBuild;
+          command: addpath('main'); LaneFollowingExecModelAdvisor; LaneFollowingExecControllerBuild;
           
       # Runs a set of commands using the runners shell
       - name: Run all tests
